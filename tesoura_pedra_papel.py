@@ -1,28 +1,42 @@
 import random
 
-print('Bem vindo ao Pedra, Papel e Tesoura:')
+OPCOES = ('pedra', 'papel', 'tesoura')
+VENCE_DE = {'pedra': 'tesoura', 'papel': 'pedra', 'tesoura': 'papel'}
 
-jogar = input('Deseja jogar [S/N]: ').strip().upper()
 
-opcoes = ('pedra','papel','tesoura')
+def ler_jogada():
+    while True:
+        jogada = input('Pedra, papel ou tesoura? ').strip().lower()
+        if jogada in OPCOES:
+            return jogada
+        print('Item inválido. Escolha pedra, papel ou tesoura.')
 
-while True:
-    if jogar == 'S':
-        escolha = input('Pedra, Papel ou Tesoura: ').strip().lower()
-        computador = random.choice(opcoes)
-        print(f'O Computador escolheu: {computador}')
-        if escolha == computador:
-            print('Empate!!')
-        elif (escolha == 'pedra') or (escolha == 'tesoura') or (escolha == 'papel') != computador:
-            print('Você Ganhou')
-            
-        else:
-            print(f'O computador ganhou \n Sua escolha: {escolha} n Computador escolheu: {computador}')
-            
-    elif jogar != 'S':
-        break
-    sair = input('Deseja sair? [S/N] ').strip().upper()
-    if sair == 'S':
-        break
+
+def jogar_partida():
+    jogador = ler_jogada()
+    computador = random.choice(OPCOES)
+    print(f'Computador escolheu {computador}.')
+
+    if jogador == computador:
+        print('Empate!')
+    elif VENCE_DE[jogador] == computador:
+        print('Você ganhou!')
     else:
-        continue
+        print('Computador venceu.')
+
+
+def inicio():
+    print('Bem-vindo ao Pedra, Papel e Tesoura!')
+    while True:
+        jogar = input('Jogar? [S/N]: ').strip().upper()
+        if jogar == 'S':
+            jogar_partida()
+        elif jogar == 'N':
+            print('Obrigado por jogar!')
+            return
+        else:
+            print('Resposta inválida. Digite S ou N.')
+
+
+if __name__ == '__main__':
+    inicio()
