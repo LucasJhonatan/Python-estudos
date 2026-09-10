@@ -30,9 +30,6 @@ Mais do que criar um jogo completo, este projeto marca o início dos meus estudo
 
 ### Próximos passos
 
-- Revisar a lógica das regras do jogo.
-- Melhorar a validação das respostas do usuário.
-- Organizar melhor o fluxo de jogar novamente.
 - Adicionar novos exercícios e projetos ao repositório.
 
 ## Ideias para próximos projetos
